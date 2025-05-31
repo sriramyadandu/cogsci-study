@@ -1,0 +1,38 @@
+---
+title: "Cognitive Science Study"
+layout: default
+permalink: "/consent-form.html"
+---
+
+<div class="container">
+    <h4 class="font-weight-bold spanborder"><span>{{ page.title }}</span></h4>
+
+    <div class="row">
+        <!-- Left column: Form -->
+        <div class="col-md-7">
+            <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSesQEoR3al2lWe4g2m5hPXkQV9vsPoJcrSzm1HYGD9eZXpAAg/viewform?embedded=true"
+                width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">
+                Loading…
+            </iframe>
+        </div>
+
+        <!-- Right column: Participant ID -->
+        <div class="col-md-5">
+            <div class="p-4 border rounded">
+                <h4 class="text-dark mb-0">Retrieve Participant ID</h4>
+                <p class="excerpt mt-2">After submitting the form, click the button below:</p>
+
+                <button id="fetch-id-btn" class="btn btn-primary btn-sm mb-3">
+                    Get Participant ID
+                </button>
+                <script src="{{site.baseurl}}/assets/js/participant-id.js"></script>
+
+                <div id="all-sheets" class="excerpt text-dark">
+                    Will generate once the consent form is signed...
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
