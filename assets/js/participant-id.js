@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = `
           ✅ Your Participant ID: <strong>${result}</strong><br><br>
           Please remember this number for the remainder of the study.<br><br>
-          <a href="pre-survey.html" class="btn btn-success">Continue to Study</a>
+          <a href="pre-survey.html?id=${encodeURIComponent(result)}" class="btn btn-success">Continue to Study</a>
         `;
       }
     } catch (err) {
