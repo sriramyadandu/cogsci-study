@@ -39,7 +39,6 @@ permalink: "/pre-survey.html"
     const params = new URLSearchParams(window.location.search);
     const participantId = params.get("id") || "0";  // fallback if missing
 
-    // Replace with your actual Google Form and entry ID
     const formSrc = `https://docs.google.com/forms/d/e/1FAIpQLScX62DrVw907WS3plhugkBIdGVOLfYF7_Gyy96XbZjIiJgijw/viewform?embedded=true&usp=pp_url&entry.1321372830=${encodeURIComponent(participantId)}`;
 
     const iframe = document.getElementById("form-frame");

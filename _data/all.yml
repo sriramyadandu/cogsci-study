@@ -1,0 +1,56 @@
+
+- title: "SpaceX Announces First Mars Supply Launch"
+  url: "https://google.com"
+  image: "/assets/images/12.jpg"
+  excerpt: "SpaceX is preparing its first unmanned supply mission to Mars, aiming for a 2026 launch window."
+  date: 2025-05-27
+  categories: ["Space", "Technology"]
+
+- title: "Mental Health Apps See Surge in Usage"
+  url: "https://news.example.com/mental-health-apps-trend"
+  image: "/assets/images/5.jpg"
+  excerpt: "Digital mental health platforms have seen a 70% increase in usage over the past year."
+  date: 2025-05-26
+  categories: ["Health", "Technology"]
+
+- title: "Global Water Crisis Reaches Critical Levels"
+  url: "https://news.example.com/global-water-crisis"
+  image: "/assets/images/6.jpg"
+  excerpt: "A UN report warns that 40% of the global population could face water scarcity by 2030."
+  date: 2025-05-25
+  categories: ["Environment", "Global"]
+
+- title: "Cryptocurrency Market Rebounds After Slump"
+  url: "https://news.example.com/crypto-market-recovery"
+  image: "/assets/images/7.jpg"
+  excerpt: "Bitcoin and Ethereum lead a broad market recovery after weeks of volatility."
+  date: 2025-05-24
+  categories: ["Finance", "Technology"]
+
+- title: "Advancements in Quantum Computing"
+  url: "https://news.example.com/quantum-computing-2025"
+  image: "/assets/images/8.jpg"
+  excerpt: "Researchers unveil a new quantum chip architecture that significantly improves qubit stability."
+  date: 2025-05-23
+  categories: ["Technology", "Research"]
+
+- title: "Education Reform Debated in U.S. Congress"
+  url: "https://news.example.com/us-education-reform"
+  image: "/assets/images/9.jpg"
+  excerpt: "Lawmakers are discussing major reforms to improve access to quality education across the country."
+  date: 2025-05-22
+  categories: ["Education", "Politics"]
+
+- title: "Global Markets React to Interest Rate Hike"
+  url: "https://news.example.com/global-interest-rates"
+  image: "/assets/images/10.jpg"
+  excerpt: "Stock indices dipped slightly after the Fed announced a 0.5% interest rate increase."
+  date: 2025-05-21
+  categories: ["Finance", "Economy"]
+
+- title: "New VR Headset Aims to Revolutionize Gaming"
+  url: "https://news.example.com/vr-headset-launch"
+  image: "/assets/images/12.jpg"
+  excerpt: "The latest VR headset features retina-resolution displays and full-body tracking support."
+  date: 2025-05-20
+  categories: ["Technology", "Gaming"]

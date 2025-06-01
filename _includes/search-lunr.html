@@ -8,23 +8,18 @@ $(function() {
     });
 });
     
-{% assign counter = 0 %}
-var documents = [{% for page in site.pages %}{% if page.url contains '.xml' or page.url contains 'assets' %}{% else %}{
+var documents = [
+  {% assign counter = 0 %}
+  {% for article in site.data.all %}
+  {
     "id": {{ counter }},
-    "url": "{{ site.url }}{{site.baseurl}}{{ page.url }}",
-    "title": "{{ page.title }}",
-    "body": "{{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-    }, {% endif %}{% endfor %}{% for page in site.without-plugin %}{
-    "id": {{ counter }},
-    "url": "{{ site.url }}{{site.baseurl}}{{ page.url }}",
-    "title": "{{ page.title }}",
-    "body": "{{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-    }, {% endfor %}{% for page in site.posts %}{
-    "id": {{ counter }},
-    "url": "{{ site.url }}{{site.baseurl}}{{ page.url }}",
-    "title": "{{ page.title }}",
-    "body": "{{ page.date | date: "%Y/%m/%d" }} - {{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-    }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
+    "url": "{{ article.url }}",
+    "title": "{{ article.title | escape }}",  // no downcase
+    "body": "{{ article.excerpt | strip_html | strip_newlines | replace: '"', ' ' }}" // no downcase
+  }{% assign counter = counter | plus: 1 %}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
 
 var idx = lunr(function () {
     this.ref('id')
@@ -36,9 +31,11 @@ var idx = lunr(function () {
     }, this)
 });
 
+console.log("Loaded documents:", documents);
 
     
 function lunr_search(term) {
+    term = term.toLowerCase();
     $('#lunrsearchresults').show( 1000 );
     $( "body" ).addClass( "modal-open" );
     
@@ -46,7 +43,9 @@ function lunr_search(term) {
     if(term) {
         document.getElementById('modtit').innerHTML = "<h5 class='modal-title'>Search results for '" + term + "'</h5>" + document.getElementById('modtit').innerHTML;
         //put results on the screen.
-        var results = idx.search(term);
+        var results = idx.search(term.split(/\s+/).map(function(word) {
+            return word + "*";
+        }).join(" "));
         if(results.length>0){
             //console.log(idx.search(term));
             //if results
