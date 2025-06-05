@@ -1,9 +1,9 @@
-- title: "Securing Our Borders"
-  url: "https://www.whitehouse.gov/presidential-actions/2025/01/securing-our-borders/"
-  image: "https://asset.gallup.com/p/POLL/91feb326-712f-4e5c-b98a-f2c8ab6df25f.jpg"
-  categories: ["immigration", "support"]
-  date: "2025-01-20"
-  excerpt: "This executive order outlines measures to enhance border security, including the construction of physical barriers, increased deployment of personnel, and stricter enforcement of immigration laws to prevent unlawful entry and protect national sovereignty."
+- title: "Global Immunization Efforts Have Saved at Least 154 Million Lives Over the Past 50 Years"
+  url: "https://www.who.int/news/item/24-04-2024-global-immunization-efforts-have-saved-at-least-154-million-lives-over-the-past-50-years"
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShFwCNc95-3HujYxCa_XXHelLn45A6pZ14iQ&s"
+  categories: ["vaccination", "support"]
+  date: "2024-04-24"
+  excerpt: "This article from the World Health Organization celebrates 50 years of the Expanded Programme on Immunization, estimating that vaccines have saved at least 154 million lives. It emphasizes the transformative impact of immunization and calls for continued commitment to equitable access to vaccines worldwide."
 
 - title: "Trump’s Rash Immigration Actions Place Cruelty and Spectacle Above Security"
   url: "https://www.americanprogress.org/article/trumps-rash-immigration-actions-place-cruelty-and-spectacle-above-security/"
@@ -12,19 +12,12 @@
   date: "2025-02-27"
   excerpt: "This article examines the Trump administration's immigration policies, highlighting concerns about their impact on public safety, national security, and the well-being of families and communities."
 
-- title: "Immigration’s Impact on a Minnesota Town"
-  url: "https://apnews.com/article/019135a73205346a310eb1595da88d86"
-  image: "https://dims.apnews.com/dims4/default/3d1ea00/2147483647/strip/true/crop/4646x3097+0+0/resize/1440x960!/format/webp/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F3c%2Fe0%2Fcae1487c302db250f010e7b1d71c%2Fdc520a509eaa4909a46c0ce3edbf749b"
-  categories: ["immigration", "neutral"]
-  date: "2025-06-01"
-  excerpt: "This article explores how immigration has reshaped Worthington, Minnesota, over a generation. It highlights the demographic, cultural, and economic transformation brought by immigrants from Southeast Asia, East Africa, and Central America, while also addressing the town’s challenges in education, language access, and civic integration."
-
-- title: "Unpopular, Polarizing, and Ineffective"
-  url: "https://www.city-journal.org/article/unpopular-polarizing-and-ineffective"
-  image: "https://media5.manhattan-institute.org/iiif/2/sites%2Fcj%2Ffiles%2FAffirmative-action.jpg/full/!99999,960/0/default.jpg"
-  categories: ["affirmaction", "oppose"]
-  date: "2023-01-15"
-  excerpt: "This article argues that affirmative action is deeply unpopular, polarizing, and fails to deliver intended benefits. It critiques the policy as harmful to academic performance and social cohesion, citing public opinion polls and evidence of mismatched admissions."
+- title: "RFK Jr. Promotes Vitamin A, Vaccine 'Freedom of Choice' amid 'Rapidly' Expanding Measles Outbreak"
+  url: "https://people.com/rfk-jr-measles-outbreak-promotes-vitamin-a-vaccine-freedom-of-choice-11695420?utm_source=chatgpt.com"
+  image: "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3611x2572+0+0/resize/3611x2572!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F30%2Fa6%2F63f11bbf4ff1973e2383673923e1%2Fgettyimages-2154524764.jpg"
+  categories: ["vaccination", "oppose"]
+  date: "2025-03-05"
+  excerpt: "Robert F. Kennedy Jr. emphasized personal freedom regarding vaccinations and advocated vitamin A supplementation during a growing measles outbreak, underscoring his belief that vaccine decisions should be left to individuals rather than mandated by government."
 
 - title: "The Case for Affirmative Action with Professor Cara McClellan"
   url: "https://penntoday.upenn.edu/news/penn-carey-law-case-affirmative-action"
@@ -33,6 +26,13 @@
   date: "2022-10-25"
   excerpt: "In this interview, Professor Cara McClellan of Penn Carey Law argues that affirmative action is essential to addressing systemic racism in education and building a more diverse and equitable society. She highlights its role in preparing students for a multicultural world and ensuring equal opportunity."
 
+- title: "Immigration’s Impact on a Minnesota Town"
+  url: "https://apnews.com/article/019135a73205346a310eb1595da88d86"
+  image: "https://dims.apnews.com/dims4/default/3d1ea00/2147483647/strip/true/crop/4646x3097+0+0/resize/1440x960!/format/webp/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F3c%2Fe0%2Fcae1487c302db250f010e7b1d71c%2Fdc520a509eaa4909a46c0ce3edbf749b"
+  categories: ["immigration", "neutral"]
+  date: "2025-06-01"
+  excerpt: "This article explores how immigration has reshaped Worthington, Minnesota, over a generation. It highlights the demographic, cultural, and economic transformation brought by immigrants from Southeast Asia, East Africa, and Central America, while also addressing the town’s challenges in education, language access, and civic integration."
+
 - title: "Race-Neutral Alternatives to Affirmative Action in College Admissions"
   url: "https://journalistsresource.org/education/race-neutral-alternatives-affirmative-action-college-diversity/"
   image: "https://journalistsresource.org/wp-content/uploads/2023/05/MicrosoftTeams-image-3-921x500.png"
@@ -40,19 +40,12 @@
   date: "2023-06-29"
   excerpt: "This article summarizes peer-reviewed research on class-based and percentage-based alternatives to race-conscious admissions. It offers an evidence-based, nonpartisan look at how these methods affect diversity and access in higher education following the Supreme Court’s decision to end affirmative action."
 
-- title: "Global Immunization Efforts Have Saved at Least 154 Million Lives Over the Past 50 Years"
-  url: "https://www.who.int/news/item/24-04-2024-global-immunization-efforts-have-saved-at-least-154-million-lives-over-the-past-50-years"
-  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShFwCNc95-3HujYxCa_XXHelLn45A6pZ14iQ&s"
-  categories: ["vaccination", "support"]
-  date: "2024-04-24"
-  excerpt: "This article from the World Health Organization celebrates 50 years of the Expanded Programme on Immunization, estimating that vaccines have saved at least 154 million lives. It emphasizes the transformative impact of immunization and calls for continued commitment to equitable access to vaccines worldwide."
-
-- title: "RFK Jr. Promotes Vitamin A, Vaccine 'Freedom of Choice' amid 'Rapidly' Expanding Measles Outbreak"
-  url: "https://people.com/rfk-jr-measles-outbreak-promotes-vitamin-a-vaccine-freedom-of-choice-11695420?utm_source=chatgpt.com"
-  image: "https://people.com/thmb/FB7WIX5TMvXQMKRQLKKDD5EcgLA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(712x323:714x325):format(webp)/robert-f-kennedy-jr-092024-1-a11cfef7dee54685a14129f8bbdda49a.jpg"
-  categories: ["vaccination", "oppose"]
-  date: "2025-03-05"
-  excerpt: "Robert F. Kennedy Jr. emphasized personal freedom regarding vaccinations and advocated vitamin A supplementation during a growing measles outbreak, underscoring his belief that vaccine decisions should be left to individuals rather than mandated by government."
+- title: "Securing Our Borders"
+  url: "https://www.whitehouse.gov/presidential-actions/2025/01/securing-our-borders/"
+  image: "https://asset.gallup.com/p/POLL/91feb326-712f-4e5c-b98a-f2c8ab6df25f.jpg"
+  categories: ["immigration", "support"]
+  date: "2025-01-20"
+  excerpt: "This executive order outlines measures to enhance border security, including the construction of physical barriers, increased deployment of personnel, and stricter enforcement of immigration laws to prevent unlawful entry and protect national sovereignty."
 
 - title: "Public attitudes toward COVID-19 vaccination: The role of vaccine attributes, incentives, and misinformation"
   url: "https://www.nature.com/articles/s41541-021-00335-2"
@@ -60,3 +53,10 @@
   categories: ["vaccination", "neutral"]
   date: "2021-08-12"
   excerpt: "This peer-reviewed study analyzes how vaccine efficacy, approval status, financial incentives, and misinformation influence public willingness to vaccinate. The authors use a choice-based survey experiment to offer a balanced, data-driven view on factors affecting COVID-19 vaccine acceptance."
+
+- title: "Unpopular, Polarizing, and Ineffective"
+  url: "https://www.city-journal.org/article/unpopular-polarizing-and-ineffective"
+  image: "https://media5.manhattan-institute.org/iiif/2/sites%2Fcj%2Ffiles%2FAffirmative-action.jpg/full/!99999,960/0/default.jpg"
+  categories: ["affirmaction", "oppose"]
+  date: "2023-01-15"
+  excerpt: "This article argues that affirmative action is deeply unpopular, polarizing, and fails to deliver intended benefits. It critiques the policy as harmful to academic performance and social cohesion, citing public opinion polls and evidence of mismatched admissions."
