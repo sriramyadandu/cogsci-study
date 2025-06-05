@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         resultContainer.innerHTML = "🔍 Checking...";
 
         // 1. GET stance from pre-survey sheet
-        const stanceSheetId = "19BMNvRsF__4cE_i5VTAng3Sy5Wgg2wZIPpFwEI5S8FM"; // Pre-survey
+        const stanceSheetId = "1bbl-vBk0mUBpkqnpurp4r_9CXmaY3rLhIpw8bm8hfHA"; // Pre-survey
         const stanceSheetName = "pre_survey";
-        const formSheetId = "1x65dR3l2lImyosKWzNFom67JFWkdxLHydTGG-F4xfUY";
+        const formSheetId = "1i5aJaedbkm3sETw-l2dIEb5W3HuG5z2hdA2xsgRWFvA";
         const formSheetName = "url_params";
         const apiKey = "AIzaSyC8sdf9do-htTyWScQ9tEisowyP-f-Q7B4";
 
@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const stanceRows = stanceJson.values;
 
             const idIndex = 1;
-            const climateIndex = 6;
-            const gunsIndex = 7;
-            const immigrationIndex = 8;
+            const affirmActionIndex = 8;
+            const vaccinationIndex = 7;
+            const immigrationIndex = 6;
 
             let match = null;
             for (let i = stanceRows.length - 1; i > 0; i--) {
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             const stance = {
-                climate: mapToStance(match[climateIndex]),
-                guns: mapToStance(match[gunsIndex]),
+                affirmaction: mapToStance(match[affirmActionIndex]),
+                vaccination: mapToStance(match[vaccinationIndex]),
                 immigration: mapToStance(match[immigrationIndex]),
                 group: Math.random() < 0.5 ? "A" : "B"
             };
@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const ENTRY_IDS = {
                 participantId: "entry.871120931",
                 group: "entry.24563833",
-                climate: "entry.1215374200",
-                guns: "entry.1042400706",
+                affirmaction: "entry.1215374200",
+                vaccination: "entry.1042400706",
                 immigration: "entry.1149778435"
             };
 
@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const query = new URLSearchParams({
                 [ENTRY_IDS.participantId]: participantId,
                 [ENTRY_IDS.group]: finalGroup,
-                [ENTRY_IDS.climate]: stance.climate,
-                [ENTRY_IDS.guns]: stance.guns,
+                [ENTRY_IDS.affirmaction]: stance.affirmaction,
+                [ENTRY_IDS.vaccination]: stance.vaccination,
                 [ENTRY_IDS.immigration]: stance.immigration
             });
             const trackingPixel = new Image();
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 4. Redirect
             const baseUrl = document.body.dataset.baseurl || "";
-            const newsfeedUrl = `${window.location.origin}${baseUrl}/news-feed.html?id=${encodeURIComponent(participantId)}&climate=${stance.climate}&guns=${stance.guns}&immigration=${stance.immigration}&group=${stance.group}`;
+            const newsfeedUrl = `${window.location.origin}${baseUrl}/news-feed.html?id=${encodeURIComponent(participantId)}&vaccination=${stance.vaccination}&affirmaction=${stance.affirmaction}&immigration=${stance.immigration}&group=${stance.group}`;
 
             resultContainer.innerHTML = `✅ Pre-Survey completed. Redirecting to your personalized news feed...`;
             setTimeout(() => {

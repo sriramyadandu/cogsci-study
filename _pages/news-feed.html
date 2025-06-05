@@ -1,187 +1,218 @@
 ---
-title: "Mundana Free Jekyll Theme"
+title: "In The Know"
 layout: default
 pagination:
-    enabled: true
+enabled: true
 description: "A great Jekyll theme developed by Sal @wowthemesnet."
 permalink: "/news-feed.html"
 ---
 
 
-<div class="container">
+<div class="container-fluid" style="padding-left: 12rem; padding-right: 12rem;">
 
-    
-    
-    
-<!-- Begin post excerpts, let's highlight the first 4 posts on top -->
-<div class="row remove-site-content-margin">
-    
-    <!-- latest post -->
-    {% assign latest_post = site.data.featured[0] %}
-    <div class="col-md-6">
-    <div class="card border-0 mb-4 box-shadow">   
-    <a href="{{site.baseurl}}{{latest_post.url}}">
-    <div class="topfirstimage" style="background-image: url({% if latest_post.image contains "://" %}{{ latest_post.image }}{% else %} {{site.baseurl}}/{{ latest_post.image}}{% endif %}); height: 200px;    background-size: cover;    background-repeat: no-repeat;"></div>     
-    </a>
-    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
-    <h2 class="h4 font-weight-bold">
-    <a class="text-dark" href="{{site.baseurl}}{{latest_post.url}}">{{ latest_post.title }}</a>
-    </h2>
-    <p class="excerpt">
-        {{ latest_post.excerpt | strip_html | strip_newlines | truncate: 136 }}
-    </p>
-    <div>
-        <small class="d-block text-muted">
-            In <span class="catlist">
-                {% for category in latest_post.categories %}
-                <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
+
+    <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
+    <h4 class="font-weight-bold spanborder"><span>Featured</span></h4>
+    <div id="featured-posts" class="row remove-site-content-margin">
+
+        <script type="application/javascript">
+
+function isGroupB() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("group") === "B";
+}
+
+            
+            const allFeatured = [
+                {% for post in site.data.all %}
+                    {
+                    title: {{ post.title | jsonify }},
+                    url: {{ post.url | jsonify }},
+                    image: {{ post.image | jsonify }},
+                    excerpt: {{ post.excerpt | strip_html | strip_newlines | jsonify }},
+                    categories: {{ post.categories | jsonify }},
+                    date: {{ post.date | date: "%b %d, %Y" | jsonify }},
+                    tags: {{ post.tags | jsonify | default: "[]" }}
+                    }{% unless forloop.last %},{% endunless %}
                 {% endfor %}
-                </span>                   
+            ];
+
+
+            function getTopicStancePairs() {
+                const params = new URLSearchParams(window.location.search);
+                const pairs = [];
+
+                // Check for known topics in query string
+                ["vaccination", "affirmaction", "immigration"].forEach(topic => {
+                    const stance = params.get(topic);
+                    if (stance) {
+                        pairs.push({ topic, stance });
+                    }
+                });
+
+                return pairs;
+            }
+
+            function matchesPair(post, topic, stance) {
+                const cats = post.categories.map(c => c.toLowerCase());
+                return cats.includes(topic.toLowerCase()) && cats.includes(stance.toLowerCase());
+            }
+
+           function renderFeatured(posts) {
+  const container = document.getElementById("featured-posts");
+  container.innerHTML = "";
+
+  if (posts.length === 0) {
+    container.innerHTML = `<p>No featured articles match the selected criteria.</p>`;
+    return;
+  }
+
+  const leftPost = posts[0];
+  const rightPosts = posts.slice(1, 3); // Up to 2
+
+  // Left Column (Large Feature)
+  const leftCol = document.createElement("div");
+  leftCol.className = "col-md-6";
+  leftCol.innerHTML = `
+    <div class="card border-0 mb-4 box-shadow">
+      <a href="${leftPost.url}">
+        <div class="topfirstimage" style="background-image: url(${leftPost.image}); height: 200px; background-size: cover; background-repeat: no-repeat;"></div>
+      </a>
+      <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+        <h2 class="h4 font-weight-bold">
+          <a class="text-dark" href="${leftPost.url}">${leftPost.title}</a>
+        </h2>
+        <p class="excerpt">${leftPost.excerpt.slice(0, 136)}...</p>
+        <div>
+          <small class="d-block text-muted">
+            <span class="catlist">${isGroupB() ? `${leftPost.date}` : ''}</span>
+          </small>
+        </div>
+      </div>
+    </div>
+  `;
+  container.appendChild(leftCol);
+
+  // Right Column (Stacked Features)
+  const rightCol = document.createElement("div");
+  rightCol.className = "col-md-6";
+
+  rightPosts.forEach(post => {
+    const postBlock = document.createElement("div");
+    postBlock.className = "mb-3 d-flex align-items-center";
+
+    postBlock.innerHTML = `
+      <div class="col-md-4">
+        <a href="${post.url}">
+          <img class="w-100" src="${post.image}" alt="${post.title}">
+        </a>
+      </div>
+      <div>
+        <h2 class="mb-2 h6 font-weight-bold">
+          <a class="text-dark" href="${post.url}">${post.title}</a>
+        </h2>
+        <p class="excerpt small">${post.excerpt.slice(0, 100)}...</p>
+
+        <small class="d-block text-muted">
+            <span class="catlist">${isGroupB() ? `${post.date}` : ''}</span>
         </small>
-        <small class="text-muted">
-            {{ latest_post.date | date: '%b %d, %Y' }}
-        </small>
+      </div>
+    `;
+
+    rightCol.appendChild(postBlock);
+  });
+
+  container.appendChild(rightCol);
+}
+
+
+            const topicStancePairs = getTopicStancePairs();
+
+            const filteredPosts = allFeatured.filter(post =>
+                topicStancePairs.some(({ topic, stance }) => matchesPair(post, topic, stance))
+            );
+
+            renderFeatured(filteredPosts);
+        </script>
+
     </div>
-    </div>
-    </div>
-    </div>
-    
-    <div class="col-md-6">
-        
-        <!-- second latest post -->
-        {%- assign second_post = site.data.featured[1] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if second_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{second_post.url}}">
-                 <img class="w-100" src="{% if second_post.image contains "://" %}{{ second_post.image }}{% else %}{{ second_post.image | absolute_url }}{% endif %}" alt="{{ second_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{second_post.url}}">{{ second_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in second_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ second_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
+
+
+
+
+
+
+    <!-- Now the rest of the posts with the usual loop but with an offset:4 on the first page so we can skeep the first 4 posts displayed above -->
+
+    <div class="row mt-3">
+
+
+        <div class="col-md-6 main-loop">
+            <h4 class="font-weight-bold spanborder"><span>All Stories</span></h4>
+            <div id="all-posts"></div>
+        </div>
+
+
+        <script>
+            const allPosts = [
+                {% for post in site.data.all %}
+                    {
+                    title: {{ post.title | jsonify }},
+                    url: {{ post.url | jsonify }},
+                    image: {{ post.image | jsonify }},
+                    excerpt: {{ post.excerpt | strip_html | strip_newlines | jsonify }},
+                    categories: {{ post.categories | jsonify }},
+                    date: {{ post.date | date: "%b %d, %Y" | jsonify }},
+                    tags: {{ post.tags | jsonify | default: "[]" }}
+                    }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            ];
+
+            const params = new URLSearchParams(window.location.search);
+  const group = params.get("group");
+
+  function renderAllPosts(posts, group) {
+    const container = document.getElementById("all-posts");
+    container.innerHTML = "";
+
+
+    posts.forEach(post => {
+      const postHTML = `
+        <div class="mb-5 d-flex justify-content-between main-loop-card">
+          <div class="pr-3">
+            <h2 class="mb-1 h4 font-weight-bold">
+              <a class="text-dark" href="${post.url}" target="_blank" rel="noopener">${post.title}</a>
+            </h2>
+            <p class="excerpt small-text">${post.excerpt.slice(0, 186)}...</p>
+            ${group === "B" ? `<small class="text-muted">${post.date}</small>` : ``}
+          </div>
+          ${post.image ? `
+            <div class="col-md-3 pr-0 text-right">
+              <a href="${post.url}" target="_blank" rel="noopener">
+                <img class="w-100" src="${post.image}" alt="${post.title}">
+              </a>
             </div>
-        
-        <!-- third latest post -->
-        {%- assign third_post = site.data.featured[2] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if third_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{third_post.url}}">
-                 <img class="w-100" src="{% if third_post.image contains "://" %}{{ third_post.image }}{% else %}{{site.baseurl}}/{{ third_post.image }}{% endif %}" alt="{{ third_post.title }}">
-                </a>
+          ` : ``}
+        </div>
+      `;
+      container.insertAdjacentHTML("beforeend", postHTML);
+    });
+  }
+
+  renderAllPosts(allPosts, group);
+        </script>
+        <!-- Left side sticky form -->
+        <div class="col-md-6">
+            <div class="position-sticky" style="top: 100px;">
+                <div class="card p-3 shadow-sm">
+                    <h5 class="font-weight-bold mb-3">Share Your Feedback</h5>
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSesQEoR3al2lWe4g2m5hPXkQV9vsPoJcrSzm1HYGD9eZXpAAg/viewform?usp=header"
+                        width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{third_post.url}}">{{ third_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in third_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ third_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
-            </div>
-        
-        <!-- fourth latest post -->
-        {%- assign fourth_post = site.data.featured[3] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if fourth_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{fourth_post.url}}">
-                <img class="w-100" src="{% if fourth_post.image contains "://" %}{{ fourth_post.image }}{% else %}{{site.baseurl}}/{{ fourth_post.image }}{% endif %}" alt="{{ fourth_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{fourth_post.url}}">{{ fourth_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in fourth_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ fourth_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
-            </div>
-        
-    </div>
-    
-</div>
-    
-<!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
-{% for post in site.data.featured %} 
-{% if post.tags contains "sticky" %}
-<div class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 mt-3 mb-2rem bg-lightblue position-relative">
-    <div class="pl-4 pr-0 h-100 tofront">
-        <div class="row justify-content-between">
-            <div class="col-md-6 pt-6 pb-6 pr-lg-4 align-self-center">
-                <h1 class="mb-3">{{post.title}}</h1>
-                <p class="mb-3 lead">
-                    {{ post.excerpt | strip_html | strip_newlines | truncate: 136 }}
-                </p>
-                <a href="{{site.baseurl}}{{post.url}}" class="btn btn-dark">Read More</a>
-            </div>
-            <div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url({{site.baseurl}}/{{ post.image }});">	
             </div>
         </div>
     </div>
-</div> 
-{% endif %}
-{% endfor %}
-
-
-
-    
-
-
-<!-- Now the rest of the posts with the usual loop but with an offset:4 on the first page so we can skeep the first 4 posts displayed above -->
-    
-<div class="row mt-3">
-   
-    <div class="col-md-8 main-loop">
-        
-        <h4 class="font-weight-bold spanborder"><span>All Stories</span></h4>
-        
-
-        {% for post in site.data.all %}
-        
-            {% include main-loop-card.html %}
-        
-        {% endfor %}
-        
-        
-    </div>
-    
-    <div class="col-md-4">
-        {% include sidebar-featured.html %}    
-    </div>
-    
-</div>
 
 
 
