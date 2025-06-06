@@ -205,10 +205,44 @@ function isGroupB() {
         <div class="col-md-6">
             <div class="position-sticky" style="top: 100px;">
                 <div class="card p-3 shadow-sm">
-                    <h5 class="font-weight-bold mb-3">INSTRUCTIONS: PLEASE READ FIRST</h5>
-                    <iframe
-                        src="https://docs.google.com/forms/d/e/1FAIpQLScgy6hDMx4XkdYMRyi0CH2_tbKEyrOSCFpQt_NYPB7yUvMSCQ/viewform?usp=header"
-                        width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                 
+
+                  <div style="margin-top: 1rem;">
+                    <button id="check-survey-button" class="btn btn-success"  style="margin-bottom: 12px;">
+                      Click here once you complete the survey below
+                    </button>
+
+                    <!-- Inline alert message -->
+                    <div id="survey-message" class="mt-4" style="display: none;"></div>
+
+                  </div>
+
+                  <body data-baseurl="{{ site.baseurl }}">
+                  <script src="{{ site.baseurl }}/assets/js/study-survery-check.js"></script>
+
+                  <div id="form-container"></div>
+
+                    <div id="form-container"></div>
+
+                    <script>
+                      const urlParams = new URLSearchParams(window.location.search);
+                      const participantId = urlParams.get('id'); // Get the ID from URL
+
+                      const formSrcBase = 'https://docs.google.com/forms/d/e/1FAIpQLScgy6hDMx4XkdYMRyi0CH2_tbKEyrOSCFpQt_NYPB7yUvMSCQ/viewform';
+                      const prefilledSrc = `${formSrcBase}?usp=pp_url&entry.295314351=${encodeURIComponent(participantId || '')}`;
+
+                      const iframe = document.createElement('iframe');
+                      iframe.src = prefilledSrc;
+                      iframe.width = '100%';
+                      iframe.height = '600';
+                      iframe.frameBorder = '0';
+                      iframe.marginHeight = '0';
+                      iframe.marginWidth = '0';
+                      iframe.textContent = 'Loading…';
+
+                      document.getElementById('form-container').appendChild(iframe);
+                    </script>
+
                 </div>
             </div>
         </div>

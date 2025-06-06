@@ -1,0 +1,42 @@
+---
+title: "Post-Survey"
+layout: default
+permalink: /post-survey.html
+---
+<div class="container" style="max-width: 800px; margin: 0 auto; padding-top: 2rem;">
+
+  <h2 class="mb-4">Thank You for Participating in the Study</h2>
+
+  <p class="lead">
+    We appreciate your time and contributions. Please complete the short post-survey below to help us evaluate your experience.
+  </p>
+
+  <!-- Placeholder for iframe -->
+  <div id="form-container" style="margin-top: 2rem; margin-bottom: 2rem;"></div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const participantId = params.get("id");
+
+    const entryId = "entry.2069478663";
+    const formBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSctS0iSLnoblhQ1tz7pPZ3ub1-7mYUprksSkC_GmF1C9ULFYg/viewform";
+
+    const fullFormUrl = participantId
+      ? `${formBaseUrl}?usp=pp_url&${entryId}=${encodeURIComponent(participantId)}&embedded=true`
+      : `${formBaseUrl}?embedded=true`;
+
+    const iframe = document.createElement("iframe");
+    iframe.src = fullFormUrl;
+    iframe.width = "100%";
+    iframe.height = "800";
+    iframe.frameBorder = "0";
+    iframe.marginHeight = "0";
+    iframe.marginWidth = "0";
+    iframe.textContent = "Loading…";
+
+    document.getElementById("form-container").appendChild(iframe);
+  });
+</script>
