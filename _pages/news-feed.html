@@ -75,7 +75,7 @@ function isGroupB() {
   leftCol.className = "col-md-6";
   leftCol.innerHTML = `
     <div class="card border-0 mb-4 box-shadow">
-      <a href="${leftPost.url}">
+      <a href="${leftPost.url}" target="_blank" rel="noopener">
         <div class="topfirstimage" style="background-image: url(${leftPost.image}); height: 200px; background-size: cover; background-repeat: no-repeat;"></div>
       </a>
       <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
@@ -103,7 +103,7 @@ function isGroupB() {
 
     postBlock.innerHTML = `
       <div class="col-md-4">
-        <a href="${post.url}">
+        <a href="${post.url}" target="_blank" rel="noopener">
           <img class="w-100" src="${post.image}" alt="${post.title}">
         </a>
       </div>
